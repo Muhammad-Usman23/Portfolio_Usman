@@ -1,0 +1,249 @@
+/* Modern Responsive Slider Styles */
+
+/* Slider Container */
+.projects-slider-container {
+  position: relative;
+  width: 100%;
+  margin: 30px 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(2, 6, 23, 0.7);
+}
+
+/* Slides Wrapper */
+.projects-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+  width: 100%;
+}
+
+/* Individual Slide */
+.project-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  border-radius: 12px;
+}
+
+.project-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.project-slide:hover img {
+  transform: scale(1.03);
+}
+
+/* Slide Content */
+.project-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  background: linear-gradient(to top, rgba(10, 15, 23, 0.95), rgba(10, 15, 23, 0.7) 60%, transparent);
+  color: var(--text);
+  transform: translateY(0);
+  transition: transform 0.4s ease;
+}
+
+.project-slide:hover .project-content {
+  transform: translateY(-5px);
+}
+
+.project-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.project-content p {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.project-links {
+  display: flex;
+  gap: 12px;
+}
+
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.project-links a:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Navigation Arrows */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  transform: translateY(-50%);
+  z-index: 10;
+  pointer-events: none; /* Allow clicks to pass through to slide */
+}
+
+.slider-arrow {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 15, 23, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  pointer-events: auto; /* Make buttons clickable */
+  opacity: 0.7;
+}
+
+.slider-arrow:hover {
+  background: var(--accent);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Dots Navigation */
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.slider-dot.active {
+  background: var(--accent);
+  transform: scale(1.2);
+}
+
+.slider-dot:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .projects-slider-container {
+    padding: 0 30px;
+    margin: 30px 0;
+  }
+  
+  .project-slide {
+    height: 300px;
+  }
+  
+  .project-content {
+    padding: 15px;
+  }
+  
+  .project-content h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .project-content p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .project-links {
+    gap: 8px;
+  }
+  
+  .project-links a {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  
+  .slider-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-slider-container {
+    padding: 0 20px;
+    margin: 20px 0;
+  }
+  
+  .project-slide {
+    height: 250px;
+  }
+  
+  .project-content {
+    padding: 12px;
+  }
+  
+  .project-content h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  
+  .project-content p {
+    font-size: 13px;
+    margin-bottom: 10px;
+    -webkit-line-clamp: 2; /* Limit to 2 lines on very small screens */
+  }
+  
+  .project-links {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .project-links a {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  
+  .slider-nav {
+    padding: 0 10px;
+  }
+  
+  .slider-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+  
+  .slider-dot {
+    width: 8px;
+    height: 8px;
+  }
+}

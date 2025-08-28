@@ -1,0 +1,145 @@
+/* animations.css - Styles for floating icons and cursor effects */
+
+/* Floating Icons */
+.floating-icons-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none; /* Don't interfere with clicks */
+  z-index: 1; /* Above background, below content */
+  opacity: 0.7;
+}
+
+.floating-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 25s linear infinite;
+  opacity: 0.5;
+  filter: blur(0.5px);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  will-change: transform; /* Performance optimization */
+}
+
+/* Different animation paths for variety */
+.floating-icon:nth-child(odd) {
+  animation-name: float-1;
+}
+
+.floating-icon:nth-child(even) {
+  animation-name: float-2;
+}
+
+.floating-icon:nth-child(3n) {
+  animation-name: float-3;
+}
+
+.floating-icon:nth-child(3n+1) {
+  animation-name: float-4;
+}
+
+/* Floating animations */
+@keyframes float-1 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(10vw, 15vh) rotate(90deg); }
+  50% { transform: translate(20vw, 5vh) rotate(180deg); }
+  75% { transform: translate(10vw, -10vh) rotate(270deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+@keyframes float-2 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-15vw, 10vh) rotate(-90deg); }
+  50% { transform: translate(-5vw, 20vh) rotate(-180deg); }
+  75% { transform: translate(-10vw, 5vh) rotate(-270deg); }
+  100% { transform: translate(0, 0) rotate(-360deg); }
+}
+
+@keyframes float-3 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(15vw, 15vh) scale(1.1); }
+  66% { transform: translate(-15vw, 10vh) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes float-4 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate(-10vw, -15vh) scale(1.1) rotate(120deg); }
+  66% { transform: translate(15vw, -10vh) scale(0.9) rotate(240deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(360deg); }
+}
+
+/* Cursor Bubbles */
+.bubble-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Don't interfere with clicks */
+  z-index: 9999; /* Above all content */
+  overflow: hidden;
+}
+
+.cursor-bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), rgba(255, 255, 255, 0.5));
+  transform: translate(-50%, -50%);
+  animation: bubble-rise 1s ease-out forwards;
+  pointer-events: none;
+  will-change: transform, opacity; /* Performance optimization */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes bubble-rise {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: var(--initial-opacity, 0.5);
+  }
+  100% {
+    transform: translate(-50%, calc(-50% - 50px)) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .floating-icon {
+    opacity: 0.5;
+    animation-duration: 20s;
+    transform: scale(0.8);
+  }
+  
+  .cursor-bubble {
+    display: none; /* Hide cursor effects on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-icon {
+    opacity: 0.4;
+    animation-duration: 25s;
+    transform: scale(0.7);
+  }
+  
+  /* Reduce number of floating icons on very small screens */
+  .floating-icon:nth-child(odd) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-icon {
+    animation: none;
+    opacity: 0.3;
+  }
+  
+  .cursor-bubble {
+    display: none;
+  }
+}

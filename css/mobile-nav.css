@@ -1,0 +1,62 @@
+/* Mobile Navigation Styles */
+
+/* Nav Toggle Button */
+.nav-toggle {
+  display: none; /* Hidden by default, shown in media query */
+  background: transparent;
+  border: none;
+  width: 30px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  z-index: 40;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent);
+  position: absolute;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.nav-toggle-bar:nth-child(1) {
+  top: 0;
+}
+
+.nav-toggle-bar:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-toggle-bar:nth-child(3) {
+  bottom: 0;
+}
+
+/* Active state (when menu is open) */
+.nav-toggle.active .nav-toggle-bar:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.nav-toggle.active .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Media query to show toggle on mobile */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+  
+  /* Prevent body scrolling when menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
+}

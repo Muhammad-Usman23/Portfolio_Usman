@@ -1,0 +1,91 @@
+/* Button and container overflow fixes */
+
+/* General button fixes */
+.btn {
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+/* Fix for button containers */
+.hero-ctas,
+.about-actions,
+.project-links,
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* About section button container */
+.about-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+}
+
+/* Project links fixes */
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-links a {
+  font-size: 14px;
+  padding: 8px 16px;
+  white-space: nowrap;
+}
+
+/* Form action buttons */
+.form-actions .btn {
+  flex: 0 1 auto;
+  min-width: 120px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-ctas,
+  .about-actions,
+  .project-links,
+  .form-actions {
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-ctas,
+  .about-actions,
+  .form-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-ctas .btn,
+  .about-actions .btn,
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .project-links {
+    justify-content: space-between;
+  }
+  
+  .project-links a {
+    flex: 1 1 auto;
+    text-align: center;
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+}
